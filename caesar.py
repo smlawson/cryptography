@@ -50,7 +50,7 @@ if choice == 2:
     ciphertext = ciphertext.upper()
     c = list(ciphertext)
 
-    known_key = raw_input("Do you know the shift parameter? Enter (Y)es or (N)o: ")
+    known_key = raw_input("Do you know the shift parameter? Enter (Y)es or (N)o: ") with
 
     while (known_key != "Yes"
         and known_key != "yes"

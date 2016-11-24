@@ -13,6 +13,8 @@ def english_score(text, wordlist):
 
     :return: percentage of words considered english in the text
     '''
+
+    text = text.lower()
     score = 0
     msg_len = 0
 
@@ -23,15 +25,16 @@ def english_score(text, wordlist):
 
     # For debugging:
     # print str(score) + " considered-English words out of " + str(msg_len) + " total words."
+    # print str((score / msg_len) * 100) + "%"
 
     return (score / msg_len) * 100
 
 def is_correct(text):
-    ''' If the text has >= 20% English, return it because it's probably the correct
+    ''' If the text has >= 30% English, return it because it's probably the correct
         decryption. Otherwise, return None.
     '''
 
-    if english_score(text, wordlist) >= 20:
+    if english_score(text, wordlist) >= 30:
         return text
     else:
         return None

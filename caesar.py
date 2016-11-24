@@ -1,4 +1,5 @@
 import timeit
+import verifyer
 import string
 
 
@@ -50,7 +51,7 @@ if choice == 2:
     ciphertext = ciphertext.upper()
     c = list(ciphertext)
 
-    known_key = raw_input("Do you know the shift parameter? Enter (Y)es or (N)o: ") with
+    known_key = raw_input("Do you know the shift parameter? Enter (Y)es or (N)o: ")
 
     while (known_key != "Yes"
         and known_key != "yes"
@@ -82,7 +83,8 @@ if choice == 2:
         while s < 26:
             decrypt(c)
             plaintext = ''.join(c)
-            print plaintext
+            if verifyer.is_correct(plaintext) is not None:
+                print plaintext
             encrypt(c)
             s += 1
 

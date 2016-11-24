@@ -2,7 +2,12 @@
 This module determines how likely a decryption is to be the correct one by how many English words
 it seems to have. It MUST have words, i.e., there must be whitespace separating words.
 
-Just call the is_correct() function when using this module.
+Just call the is_correct() function when using this module, like so:
+
+    is_correct(your_text)      # will default to returning the text if >= 30 percent of it is english,
+                               # by default
+
+    is_correct(your_text, 80)  # will only return the text if >= 80 percent of it is english
 '''
 
 wordlist = open("word_dictionary.txt", 'r').read().split('\n') # I'm an OED man myself
@@ -29,12 +34,15 @@ def english_score(text, wordlist):
 
     return (score / msg_len) * 100
 
-def is_correct(text):
+def is_correct(text, threshold=30):
     ''' If the text has >= 30% English, return it because it's probably the correct
         decryption. Otherwise, return None.
+
+        The 'threshold=30' is a default argument. You can change it if you're getting
+        weird results.
     '''
 
-    if english_score(text, wordlist) >= 30:
+    if english_score(text, wordlist) >= threshold:
         return text
     else:
         return None

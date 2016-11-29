@@ -1,4 +1,5 @@
 import timeit
+import verifyer
 import string
 
 
@@ -82,7 +83,8 @@ if choice == 2:
         while s < 26:
             decrypt(c)
             plaintext = ''.join(c)
-            print plaintext
+            if verifyer.is_correct(plaintext) is not None:
+                print plaintext
             encrypt(c)
             s += 1
 

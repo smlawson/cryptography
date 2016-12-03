@@ -1,7 +1,6 @@
 import timeit
-import verifyer
 import string
-
+import modules.verifyer
 
 alphabet = string.printable
 
@@ -43,7 +42,7 @@ if choice == 1:
     encrypt(p)
     ciphertext = ''.join(p)
     elapsed = timeit.default_timer() - start_time
-    print ciphertext
+    print(ciphertext)
     print("Encrypted message in %.10f seconds." % elapsed)
 
 if choice == 2:
@@ -70,21 +69,21 @@ if choice == 2:
         start_time = timeit.default_timer()
         decrypt(c)
         plaintext = ''.join(c)
-        print plaintext
+        print(plaintext)
 
         elapsed = timeit.default_timer() - start_time
         print("Decrypted with known key in %.10f seconds." % elapsed)
 
     else:
         s = 1
-        print ""
+        print("")
 
         start_time = timeit.default_timer()
         while s < 26:
             decrypt(c)
             plaintext = ''.join(c)
             if verifyer.is_correct(plaintext) is not None:
-                print plaintext
+                print(plaintext)
             encrypt(c)
             s += 1
 

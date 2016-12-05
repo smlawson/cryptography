@@ -10,7 +10,7 @@ Just call the is_correct() function when using this module, like so:
     is_correct(your_text, 80)  # will only return the text if >= 80 percent of it is english
 '''
 
-wordlist = open("word_dictionary.txt", 'r').read().split('\n') # I'm an OED man myself
+wordlist = open("../modules/wordlist.txt", 'r').read().split('\n') # I'm an OED man myself
 
 def english_score(text, wordlist):
     ''' Determine how likely a decryption is to be the correct one by how many English words

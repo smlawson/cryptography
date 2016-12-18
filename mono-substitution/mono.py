@@ -40,7 +40,7 @@ def main():
 	descrip = 'A monoalphabetic substitution encrypter/decrypter. It is capable ' \
 			  'of encrypting with your key of choice or a with a key generated ' \
 			  'randomly by this program. It can read in a file or a string passed ' \
-			  'into the command line. If no output file is specified, the decryption' \
+			  'into the command line. If no output file is specified, the decryption ' \
 			  'will be printed to STDOUT.'
 	encrypt_help = 'This flag specifies that the input will be encrypted.'
 	decrypt_help = 'This flag specifies that the output will be decrypted.'

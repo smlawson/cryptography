@@ -32,6 +32,9 @@ def decrypt(ciphertext):
 	pass
 
 def main():
+
+
+	# Command-line interface / command-line argument parsing
 	descrip = 'A monoalphabetic substitution encrypter/decrypter. It is capable ' \
 			  'of encrypting with your key of choice or a with a key generated ' \
 			  'randomly by this program. It can read in a file or a string passed ' \

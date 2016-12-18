@@ -7,7 +7,7 @@ def validate_key(key):
 		generated one by this program), check to see if the key is a valid key
 		for a monoalphabetic substitution cipher.
 	'''
-	pass
+	return True
 
 def generate_key():
 	'''
@@ -32,9 +32,11 @@ def decrypt(ciphertext):
 	pass
 
 def main():
+	'''
+		Main program execution, including the command-line interface and parsing
+		of the command-line arguments so program flow can be determined.
+	'''
 
-
-	# Command-line interface / command-line argument parsing
 	descrip = 'A monoalphabetic substitution encrypter/decrypter. It is capable ' \
 			  'of encrypting with your key of choice or a with a key generated ' \
 			  'randomly by this program. It can read in a file or a string passed ' \
@@ -51,8 +53,8 @@ def main():
 	parser = argparse.ArgumentParser(description=descrip)
 
 	group_action = parser.add_mutually_exclusive_group(required=True)
-	group_action.add_argument('-e', '--encrypt', help=encrypt_help)
-	group_action.add_argument('-d', '--decrypt', help=decrypt_help)
+	group_action.add_argument('-e', '--encrypt', action='store_true', help=encrypt_help)
+	group_action.add_argument('-d', '--decrypt', action='store_true', help=decrypt_help)
 
 	group_input = parser.add_mutually_exclusive_group(required=True)
 	group_input.add_argument('-f', '--txt-file', help=file_help)
@@ -60,7 +62,7 @@ def main():
 
 	group_key = parser.add_mutually_exclusive_group(required=True)
 	group_key.add_argument('-k', '--key', help=key_help)
-	group_key.add_argument('-r', '--random-key', help=rand_key)
+	group_key.add_argument('-r', '--random-key', action='store_true', help=rand_key)
 
 	parser.add_argument('-o', '--out-file', help=out_file)
 
@@ -89,30 +91,42 @@ def main():
 	encrypt = False
 	decrypt = False
 
+	# Figure out whether we are encryption or decrypting
+	if args.encrypt == True:
+		encrypt = True
+	else:
+		decrypt = True
+
 	if args.txt_file is not None:
 		# An input text file was passed in as the text to encrypt
-		print('Got file:', args.txt_file)
 		file_name = args.txt_file
-	if args.out_file is not None:
-		# An output file name was specified
-		print('Got out file:', args.out_file)
-		out_file_name = args.out_file
+		print('Input file:', file_name)
+
 	if args.string is not None:
 		# A string was passed in as the text to encrypt
-		print('Got string:', args.string)
 		plaintext = args.string
+		print('Input string:', plaintext)
+
+	if args.out_file is not None:
+		# An output file name was specified
+		out_file_name = args.out_file
+		print('Output file:', out_file_name)
+
+	# Figure out if a key is specified or if a random key will have to be generated
 	if args.key is not None:
 		# A key was specified by the user to encrypt with
 		if validate_key(args.key) == True:
 			key = args.key
+			print("Key:", key)
 		else:
 			# An invalid key was passed in by the user, die gracefully w/ error message
-			print("implement this")
+			# Implement this -- figure out how to stop execution
+			continue
+
 	if args.key is None:
 		# Generate a random key
+		print("Generating a random key...")
 		key = generate_key
-
-
 
 
 if __name__ == '__main__':

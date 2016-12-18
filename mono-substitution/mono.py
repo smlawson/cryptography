@@ -91,11 +91,16 @@ def main():
 	encrypt = False
 	decrypt = False
 
+	# Flag for whether an output file was specified or not
+	output_specified = False
+
 	# Figure out whether we are encryption or decrypting
 	if args.encrypt == True:
 		encrypt = True
+		print('Encryption mode.')
 	else:
 		decrypt = True
+		print('Decryption mode.')
 
 	if args.txt_file is not None:
 		# An input text file was passed in as the text to encrypt
@@ -110,6 +115,7 @@ def main():
 	if args.out_file is not None:
 		# An output file name was specified
 		out_file_name = args.out_file
+		output_specified = True
 		print('Output file:', out_file_name)
 
 	# Figure out if a key is specified or if a random key will have to be generated
@@ -121,7 +127,7 @@ def main():
 		else:
 			# An invalid key was passed in by the user, die gracefully w/ error message
 			# Implement this -- figure out how to stop execution
-			continue
+			pass
 
 	if args.key is None:
 		# Generate a random key

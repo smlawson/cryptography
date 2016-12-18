@@ -42,12 +42,12 @@ def main():
 			  'randomly by this program. It can read in a file or a string passed ' \
 			  'into the command line. If no output file is specified, the decryption ' \
 			  'will be printed to STDOUT.'
-	encrypt_help = 'This flag specifies that the input will be encrypted.'
-	decrypt_help = 'This flag specifies that the output will be decrypted.'
+	encrypt_help = 'Encrypt the input.'
+	decrypt_help = 'Decrypt the input.'
 	file_help = 'The .txt file to be used as input.'
 	string_help = 'The string to be used as input.'
 	key_help = 'The key (as a string).'
-	rand_key = 'This flag specifies that the program must generate a random key.'
+	rand_key = 'Generate a random key to encrypt with.'
 	out_file = 'The output decryption file.'
 
 	parser = argparse.ArgumentParser(description=descrip)

@@ -16,7 +16,7 @@ def generate_key():
 	'''
 	pass
 
-# Obviously other functions will have to be created
+# Draw the rest of the fucking owl
 
 def encrypt(plaintext, key):
 	'''
